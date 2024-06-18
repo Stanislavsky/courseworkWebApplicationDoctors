@@ -1,0 +1,69 @@
+<div class="container2">
+    
+    <div class="row3">     
+        <div class="col-6" style="margin-bottom: 20px">
+            <p class="textMain">Анкетирование (Диспансеризация)</p>
+            <center>
+                <form action="/questionnaire/" method="GET">
+                    <button type="submit" class="button">Открыть</button>
+                    <input type="hidden" name="passport" value="{{ passport }}">
+                </form>
+            </center> 
+        </div>
+        {% for record in patient_records_doctors %}
+        {% if record.doctor.user != current_user %}
+        <div class="col-6" style="margin-bottom: 20px">
+            
+            <p class="textMain">{{ record.doctor.get_doctor_display }}</p>
+            <p class="resultsFromDoctor">Результаты обследования</p>
+            <p class="results">Краткое заключение врача:</p>
+            <textarea rows="4" cols="50" class="comment" {% if not perms.main.change_patient_record_doctor %}readonly{% endif %}>{{ record.briefDoctorReport }}</textarea>
+            <p class="results">Патологии:</p>
+            <form class="results2" action="">
+                да
+                <input type="radio" name="pathology_{{ record.id }}" value="yes" {% if record.pathology == 'yes' %}checked{% endif %} {% if not perms.main.change_patient_record_doctor %}disabled{% endif %}>
+                нет
+                <input type="radio" name="pathology_{{ record.id }}" value="no" {% if record.pathology == 'no' %}checked{% endif %} {% if not perms.main.change_patient_record_doctor %}disabled{% endif %}>
+            </form>
+            <p class="downloadResults">Ссылка на полное заключение:</p>
+            {% if record.doctorReportWord %}
+                <a class="button22" href="{{ record.doctorReportWord.url }}" download>Скачать заключение</a>
+            {% endif %}
+            {% if perms.main.change_patient_record_doctor %}
+                <input class="button2D" type="file" name="doctor_report_file_{{ record.id }}" accept=".doc, .docx, .pdf">
+            {% endif %}
+           
+        </div>
+        {% endif %}
+
+        {% endfor %} 
+        <div class="col-6" style="margin-bottom: 20px">
+            <form method="POST" enctype="multipart/form-data" class="results2" action="{% url 'main:save_changes' %}">
+                {% csrf_token %}
+                <input type="hidden" name="patient_id" value="{{ patient_id }}">
+                <input type="hidden" name="passport" value="{{ passport }}">
+                <input type="hidden" name="name" value="{{ name }}">
+                <input type="hidden" name="sex" value="{{ sex }}">
+                <input type="hidden" name="age" value="{{ age }}">
+                <input type="hidden" name="telephone" value="{{ telephone }}"> 
+
+                <p class="textMain">Маммолог: {{ request.user }}</p>
+                <p class="resultsFromDoctor">Результаты обcледования</p>
+                <p class="results">Краткое заключение врача:</p>
+                <textarea rows="4" cols="50" class="comment" name="doctor_report">{{ brief_doctor_report }}</textarea>
+                <p class="results">Паталогии:</p>
+                <input class="results2" type="radio" name="pathology" value="yes" {% if pathology == 'yes' %}checked{% endif %}> да
+                <input class="results2" type="radio" name="pathology" value="no" {% if pathology == 'no' %}checked{% endif %}> нет
+                <p class="downloadResults">Ссылка на полное заключение:</p>
+                {% if doctorReportWord %}
+                    <a class="button22" href="{{ doctorReportWord.url }}"  download>Скачать заключение</a>
+                {% endif %}
+                <input class="button2D" type="file" name="doctor_report_file" accept=".doc, .docx, .pdf">
+                <button type="submit" class="button2">Сохранить изменения</button>
+            </form>
+        </div>
+        
+    </div>
+    
+</div>
+

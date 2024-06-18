@@ -1,0 +1,103 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static "deps/css/index.css" %}">
+    <link rel="shortcut icon" href="#">
+    <link rel="stylesheet" href="{% static "deps/css/card.css" %}">
+    <style>
+        .card-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+        }
+
+        .card {
+            width: 300px;
+            margin-bottom: 20px;
+        }
+
+        .search-container {
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+
+        .search-button {
+            margin-left: 10px;
+        }
+
+        .search-results {
+            margin-top: 20px;
+        }
+    </style>
+    <title>Главная</title>
+</head>
+<body>
+    <div class="header">
+        <div class='containerHeader'>
+            <div class="rowHeader">
+                <div class="col-12Header">
+                    {% if request.user.is_authenticated %}
+                    <h3 class="user" style="float:right;">{{ request.user }}</h3>
+                    <a class="btn" href="{% url 'main:logout' %}">Выйти</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="search-container">
+            <input class="search" type="text" id="searchInput" placeholder="Введите паспортные данные...">
+            <button class="button22" onclick="searchByPassport()">Найти</button>
+            <div id="searchResults" class="card-container">
+            </div>
+        </div>
+        <div class="card-container" id="cardContainer">
+            {% for patient in data_list %}
+            <div class="card" data-name="{{ patient.name }}" data-passport="{{ patient.passport }}">
+                <div class="warp">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-12">
+                                <img src="{% static "deps/photo/0684456b-aa2b-4631-86f7-93ceaf33303c.png" %}" alt="" class="photo">
+                            </div>
+                            <div class="col-12">
+                                <p class="fields">Пациент</p>
+                            </div>
+                            <div class="col-12">
+                                <p class="name">{{ patient.name }}</p>
+                            </div>
+                            <div class="col-12">
+                                <p class="passport-info name">Паспортные данные: <br> {{ patient.passport }}</p>
+                            </div>
+                            <div class="col-12">
+                                <p class="name">Телефон: <br> {{ patient.telephone }}</p>
+                            </div>
+                            <div class="col-12">
+                                <form action="/electronic-medical-card/" method="GET">
+                                    {% csrf_token %}
+                                    <button type="submit" class="button">
+                                        <a class="fieldsButton">Просмотр</a>
+                                    </button>
+                                    <input type="hidden" name="patient_id" value="{{ patient.patient_id }}">
+                                    <input type="hidden" name="passport" value="{{ patient.passport }}">
+                                    <input type="hidden" name="name" value="{{ patient.name }}">
+                                    <input type="hidden" name="sex" value="{{ patient.sex }}">
+                                    <input type="hidden" name="age" value="{{ patient.age }}">
+                                    <input type="hidden" name="telephone" value="{{ patient.telephone }}">
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        {% else %}
+        <a class="btn"  href="{% url 'main:login'%}">Войти</a>
+        {% endif %}
+    </div>
+    <script src="{% static "deps/js/search.js" %}"></script>
+    <script src="{% static "deps/js/js.js" %}"></script>
+</body>
+</html>

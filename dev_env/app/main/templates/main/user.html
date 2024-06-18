@@ -1,0 +1,175 @@
+<div class="container2">
+    <div class="row3">     
+        <div class="col-6" style="margin-bottom: 20px">
+            <p class="textMain">Анкетирование (Диспансеризация)</p>
+            <center>
+                <form action="/questionnaire/" method="GET">
+                    <button type="submit" class="button">Открыть</button>
+                    
+                    <input type="hidden" name="passport" value="{{ passport }}">
+                </form>
+            </center> 
+        </div>
+        
+          
+        <div class="col-6" style="margin-bottom: 20px">
+            
+            <form method="post" enctype="multipart/form-data" action="{% url 'main:save_changes' %}">
+                {% csrf_token %}
+                <input type="hidden" name="patient_id" value="{{patient_id}}">
+                <p class="textMain">Терапевт</p>
+                <p class="resultsFromDoctor">Результаты обcледования</p>
+                <p class="results">Краткое заключение врача:</p>
+                <textarea rows="4" cols="50" class="comment" name="doctor_report"></textarea>
+                <p class="results">Паталогии:</p>
+                <input class="results2" type="radio" name="pathology" value="yes"> да
+                <input class="results2" type="radio" name="pathology" value="no"> нет
+                <p class="downloadResults">Ссылака на полное заключение:</p>
+                <button class="button2">Скачать заключение</button>
+                <input class="button2D" type="file" name="doctor_report_file" accept=".doc, .docx, .pdf">
+                <button class="button2">Изменения</button>
+                <button type="submit" class="button2">Сохранить изменения</button>
+            </form>
+            
+        </div>
+        
+    </div>
+    <div class="row3">
+        
+        <div class="col-6" style="margin-bottom: 20px">
+            <p class="textMain">Рентгенолог</p>
+            <p class = "resultsFromDoctor">Результаты обcледования</p>
+            <p class = "results">Краткое заключение врача:</p>
+            <textarea rows="4" cols="50" class="comment"></textarea>
+            <p class = "results">Паталогии:</p>
+            <form class="results2" action="">
+                да
+                <input type="radio" name="choice" value="yes">
+                нет
+                <input type="radio" name="choice" value="no">
+            </form>
+            <p class = "downloadResults">Ссылака на полное заключение:</p>
+            <button class="button2" >Прикрепить заключение</button>
+            <button class="button2" >Скачать заключение</button>
+            <button class="button2" >Изменения</button>
+            <button class="button2" >Сохранить изменения</button>
+        </div>
+        
+       
+        <div class="col-6" style="margin-bottom: 20px">
+            <p class="textMain">Гинеколог</p>
+            <p class = "resultsFromDoctor">Результаты обcледования</p>
+            <p class = "results">Краткое заключение врача:</p>
+            <textarea rows="4" cols="50" class="comment"></textarea>
+            <p class = "results">Паталогии:</p>
+            <form class="results2" action="">
+                да
+                <input type="radio" name="choice" value="yes">
+                нет
+                <input type="radio" name="choice" value="no">
+            </form>
+            <p class = "downloadResults">Ссылака на полное заключение:</p>
+            <button class="button2" >Прикрепить заключение</button>
+            <button class="button2" >Скачать заключение</button>
+            <button class="button2" >Изменения</button>
+            <button class="button2" >Сохранить изменения</button>
+        </div>
+        
+    </div>
+    <div class="row3">
+        <div class="col-6" style="margin-bottom: 20px">
+            <p class="textMain">Кардиолог</p>
+            <p class = "resultsFromDoctor">Результаты обcледования</p>
+            <p class = "results">Краткое заключение врача:</p>
+            <textarea rows="4" cols="50" class="comment"></textarea>
+            <p class = "results">Паталогии:</p>
+            <form class="results2" action="">
+                да
+                <input type="radio" name="choice" value="yes">
+                нет
+                <input type="radio" name="choice" value="no">
+            </form>
+            <p class = "downloadResults">Ссылака на полное заключение:</p>
+            <button class="button2" >Прикрепить заключение</button>
+            <button class="button2" >Скачать заключение</button>
+            <button class="button2" >Изменения</button>
+            <button class="button2" >Сохранить изменения</button>
+        </div>
+        <div class="col-6" style="margin-bottom: 20px">
+            <p class="textMain">Офтальмолог</p>
+            <p class = "resultsFromDoctor">Результаты обcледования</p>
+            <p class = "results">Краткое заключение врача:</p>
+            <textarea rows="4" cols="50" class="comment"></textarea>
+            <p class = "results">Паталогии:</p>
+            <form class="results2" action="">
+                да
+                <input type="radio" name="choice" value="yes">
+                нет
+                <input type="radio" name="choice" value="no">
+            </form>
+            <p class = "downloadResults">Ссылака на полное заключение:</p>
+            <button class="button2" >Прикрепить заключение</button>
+            <button class="button2" >Скачать заключение</button>
+            <button class="button2" >Изменения</button>
+            <button class="button2" >Сохранить изменения</button>
+        </div>
+        
+    </div>
+    <div class="row3">
+        <div class="col-6" style="margin-bottom: 20px">
+            <p class="textMain">Процедурная медицинская сестра (анализы)</p>
+            <p class = "resultsFromDoctor">Результаты обледованиря</p>
+            <p class = "results">Паталогии:</p>
+            <form class="results2" action="">
+                да
+                <input type="radio" name="choice" value="yes">
+                нет
+                <input type="radio" name="choice" value="no">
+            </form>
+            <p class = "downloadResults">Ссылака на полное заключение:</p>
+            <button class="button2" >Прикрепить заключение</button>
+            <button class="button2" >Скачать заключение</button>
+            <button class="button2" >Изменения</button>
+            <button class="button2" >Сохранить изменения</button>
+        </div>
+        <div class="col-6" style="margin-bottom: 20px">
+            <p class="textMain">Маммолог</p>
+            <p class = "resultsFromDoctor">Результаты обcледования</p>
+            <p class = "results">Краткое заключение врача:</p>
+            <textarea rows="4" cols="50" class="comment"></textarea>
+            <p class = "results">Паталогии:</p>
+            <form class="results2" action="">
+                да
+                <input type="radio" name="choice" value="yes">
+                нет
+                <input type="radio" name="choice" value="no">
+            </form>
+            <p class = "downloadResults">Ссылака на полное заключение:</p>
+            <button class="button2" >Прикрепить заключение</button>
+            <button class="button2" >Скачать заключение</button>
+            <button class="button2" >Изменения</button>
+            <button class="button2" >Сохранить изменения</button>
+        </div>
+        <div class="col-6" style="margin-bottom: 20px">
+            <p class="textMain">Уролог</p>
+            <p class = "resultsFromDoctor">Результаты обcледования</p>
+            <p class = "results">Краткое заключение врача:</p>
+            <textarea rows="4" cols="50" class="comment"></textarea>
+            <p class = "results">Паталогии:</p>
+            <form class="results2" action="">
+                да
+                <input type="radio" name="choice" value="yes">
+                нет
+                <input type="radio" name="choice" value="no">
+            </form>
+            <p class = "downloadResults">Ссылака на полное заключение:</p>
+            <button class="button2" >Прикрепить заключение</button>
+            <button class="button2" >Скачать заключение</button>
+            <button class="button2" >Изменения</button>
+            <button class="button2" >Сохранить изменения</button>
+        </div>
+        
+    </div>
+    
+</div>
+

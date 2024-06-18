@@ -1,0 +1,91 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static "deps/css/qws.css" %}">
+    <title>Анкета</title>
+</head>
+<body>
+    <div class='containerHeader'>
+        <div class="rowHeader">
+            <div class="col-12Header">
+                {% if request.user.is_authenticated %}
+                
+                <form action="/electronic-medical-card/" method="GET">
+                    {% csrf_token %}
+                    <button type="submit" class="button" style="float:left; margin-left:100px; ">Вернуться</button>
+                    <input type="hidden" name="patient_id" value="{{ patient_data.user_id }}">
+                    <input type="hidden" name="passport" value="{{ patient_data.user_passport }}">
+                    <input type="hidden" name="name" value="{{ patient_data.user_name }}">
+                    <input type="hidden" name="sex" value="{{ patient_data.user_gender }}">
+                    <input type="hidden" name="age" value="{{ patient_data.user_age }}">
+                    <input type="hidden" name="telephone" value="{{ patient_data.user_telephone }}">
+                </form>
+                <button id="downloadBtn" class="button">Скачать анкету</button>
+                <p class="questionnaire">1.1) Ф.И.О.: {{ patient_data.user_name }}</p>
+                <p class="questionnaire">1.2) Пастпортные данные (серия, номер): {{ patient_data.user_passport }}</p>
+                <p class="questionnaire">1.3) Город проживания: {{ patient_data.user_city }}</p>
+                <p class="questionnaire">1.4) Адресс проживания: {{ patient_data.user_address }}</p>
+                <p class="questionnaire">1.5) Контактный телефон: {{ patient_data.user_telephone }}</p>
+                <p class="questionnaire">2) Пол: {{ patient_data.user_gender }}</p>
+                <p class="questionnaire">3) Дата прохождения анкеты: {{ patient_data.user_datetime }}</p>
+                <p class="questionnaire">4) Возраст: {{ patient_data.user_age }}</p>
+                <p class="questionnaire">5) Рост: {{ patient_data.user_height }}</p>
+                <p class="questionnaire">6) Вес: {{ patient_data.user_weight }}</p>
+                <p class="questionnaire">7) Краткое описание жалоб на данный момент: {{ patient_data.user_briefDescriptionComplaintsDate }}</p>
+                <p class="questionnaire">8) Аллергические реакции: {{ patient_data.user_allergicReactions }}</p>
+                <p class="questionnaire">9.1) Гипертоническая болезнь(повышенное артериальное давление) да/нет?: {{ patient_data.user_hyperallergicReactionstonicDisease }}</p>
+                <p class="questionnaire">9.2) Принимаете ли Вы препараты для снижения давления? Напишите (да/нет) Если (да), то какие?: {{ patient_data.user_takeHyperallergicMedications }}</p>
+                <p class="questionnaire">9.3) Ишемическая болезнь сердца (стенокардия): {{ patient_data.user_cardiacIschemia }}</p>
+                <p class="questionnaire">9.4) Цереброваскулярное заболевание (заболевание сосудов головногомозга)? да/нет?: {{ patient_data.user_cerebrovascularDisease }}</p>
+                <p class="questionnaire">9.4) Хроническое заболевание бронхов или легких (хронический бронхит, эмфизема, бронхиальная астма)? да/нет?: {{ patient_data.user_chronicDisease }}</p>
+                <p class="questionnaire">9.5) Туберкулез (легких или иных локализаций)? да/нет?: {{ patient_data.user_tuberculosis }}</p>
+                <p class="questionnaire">9.6) Сахарный диабет или повышенный уровень сахара в крови? да/нет?: {{ patient_data.user_diabetes }}</p>
+                <p class="questionnaire">9.7) Принимаете ли Вы препараты для снижения уровня сахара? Напишите (да/нет) Если (да), то какие?: {{ patient_data.user_takeMedications }}</p>
+                <p class="questionnaire">9.8) Заболевания желудка (гастрит, язвенная болезнь)? да/нет: {{ patient_data.user_stomachDiseases }}</p>
+                <p class="questionnaire">9.9) Хроническое заболевание почек? да/нет: {{ patient_data.user_chronicKidneyDisease }}</p>
+                <p class="questionnaire">9.10) Злокачественное новообразование? да/нет: {{ patient_data.user_malignantNeoplasm }}</p>
+                <p class="questionnaire">9.11) Какое злокачественное новообразование? Напишите (да/нет) Если (да), то какие?: {{ patient_data.user_whichMalignantNeoplasm }}</p>
+                <p class="questionnaire">9.12) Повышенный уровень холестерина? да/нет: {{ patient_data.user_elevatedСholesterol }}</p>
+                <p class="questionnaire">9.13) Принимаете ли Вы препараты для снижения уровня холестерина? Напишите (да/нет) Если (да), то какие?: {{ patient_data.user_drugsElevatedСholesterol }}</p>
+                <p class="questionnaire">10) Был ли у Вас инфаркт миокарда? да/нет: {{ patient_data.user_myocardium }}</p>
+                <p class="questionnaire">11) Был ли у Вас инсульт? да/нет: {{ patient_data.user_stroke }}</p>
+                <p class="questionnaire">12) Был ли инфаркт миокарда или инсульт у Ваших близких родственников в молодом или среднем возрасте (до 65 лет у матери или родных сестер или до 55 лет у отца или родных братьев)? да/нет: {{ patient_data.user_myocardialInfarction }}</p>
+                <p class="questionnaire">13) Были ли у Ваших близких родственников в молодом или среднем возрасте злокачественные новообразования (легкого, желудка, кишечника, толстой или прямой кишки, предстательной железы, молочной железы, матки, опухоли других локализаций) или полипоз желудка, семейный аденоматоз / диффузный полипоз толстой кишки?: {{ patient_data.user_Relatives }}</p>
+                <p class="questionnaire">14) Возникает ли у Вас, когда поднимаетесь по лестнице, идете в гору или спешите, или при выходе из теплого помещения на холодный воздух, боль или ощущение давления, жжения, тяжести или явного дискомфорта за грудиной и (или) в левой половине грудной клетки, и (или) в левом плече, и (или) в левой руке?: {{ patient_data.user_chestDiscomfort }}</p>
+                <p class="questionnaire">15) Если на вопрос 6 ответ «Да», то указанные боли/ощущения/дискомфорт исчезают сразу или в течение не более чем 20 мин после прекращения ходьбы/адаптации к холоду/ в тепле/в покое и (или) они исчезают через 1−5 мин после приема нитроглицерина: {{ patient_data.user_ifChestDiscomfort }}</p>
+                <p class="questionnaire">16) Возникала ли у Вас когда-либо внезапная кратковременная слабость или неловкость при движении в одной руке (ноге) либо руке и ноге одновременно так, что Вы не могли взять или удержать предмет, встать со стула, пройтись по комнате?  да/нет: {{ patient_data.user_termWeakness }}</p>
+                <p class="questionnaire">17) Возникало ли у Вас когда-либо внезапное без явных причин кратковременное онемение в одной руке, ноге или половине лица, губы или языка? да/нет: {{ patient_data.user_numbness }}</p>
+                <p class="questionnaire">18) Возникала ли у Вас когда-либо внезапно кратковременная потеря зрения на один глаз? да/нет: {{ patient_data.user_visionLoss }}</p>
+                <p class="questionnaire">19) Бывают ли у Вас ежегодно периоды ежедневного кашля с отделением мокроты на протяжении примерно 3 месяцев в году?{{ patient_data.user_cough }}</p>
+                <p class="questionnaire">20) Бывают ли у Вас свистящие или жужжащие хрипы в грудной клетке при дыхании, не проходящие при откашливании?: {{ patient_data.user_wheezing }}</p>
+                <p class="questionnaire">21) Бывало ли у Вас когда-либо кровохарканье?: {{ patient_data.user_hemoptysis }}</p>
+                <p class="questionnaire">22) Беспокоят ли Вас боли в области верхней части живота (в области желудка), отрыжка, тошнота, рвота, ухудшение или отсутствие аппетита?: {{ patient_data.user_upperAbdomen }}</p>
+                <p class="questionnaire">23) Бывает ли у Вас неоформленный (полужидкий) черный или дегтеобразный стул?: {{ patient_data.user_poop }}</p>
+                <p class="questionnaire">24) Похудели ли Вы за последнее время без видимых причин (т.е. без соблюдения диеты или увеличения физической активности и пр.)?: {{ patient_data.user_lostWeight }}</p>
+                <p class="questionnaire">25) Бывает ли у Вас боль в области заднепроходного отверстия?: {{ patient_data.user_holes }}</p>
+                <p class="questionnaire">26) Бывают ли у Вас кровяные выделения с калом?: {{ patient_data.user_bleeding }}</p>
+                <p class="questionnaire">27) Курите ли Вы?: {{ patient_data.user_smoke }}</p>
+                <p class="questionnaire">28) Если Вы курите, то сколько в среднем сигарет в день выкуриваете? ___ сиг/день: {{ patient_data.user_howManySmoke }}</p>
+                <p class="questionnaire">29) Сколько минут в день Вы тратите на ходьбу в умеренном или быстром темпе (включая дорогу до места работы и обратно)? До 30 минут 30 минут и более: {{ patient_data.user_walking }}</p>
+                <p class="questionnaire">30) Присутствует ли в Вашем ежедневном рационе 400−500 г сырых овощей и фруктов?: {{ patient_data.user_diet }}</p>
+                <p class="questionnaire">31) Имеете ли Вы привычку подсаливать приготовленную пищу, не пробуя ее?: {{ patient_data.user_addSomeSalt }}</p>
+                <p class="questionnaire">32) Принимали ли Вы за последний год психотропные или наркотические вещества без назначения врача?: {{ patient_data.user_narcotic }}</p>
+                <p class="questionnaire">33) Как часто Вы употребляете алкогольные напитки?: {{ patient_data.user_quantityAlcoholic }}</p>
+                <p class="questionnaire">34) Какое количество алкогольных напитков (порций) Вы выпиваете обычно за один раз? 1 порция равна 12 мл чистого этанола ИЛИ 30 мл крепкого алкоголя (водки), ИЛИ 100 мл сухого вина, ИЛИ 300 мл пива: {{ patient_data.user_youUseAlcoholic }}</p>
+                <p class="questionnaire">35) Как часто Вы употребляете за один раз 6 или более порций? 6 порций равны ИЛИ 180 мл крепкого алкоголя (водки), ИЛИ 600 мл сухого вина, ИЛИ 1,8 л пива: {{ patient_data.user_totalPoints }}</p>
+                <p class="questionnaire">36) ОБЩАЯ СУММА БАЛЛОВ в ответах на вопросы №№ 32-34 равна баллов: {{ patient_data.user_countPoints }}</p>
+                <p class="questionnaire">38) Есть ли у Вас другие жалобы на свое здоровье, не вошедшие в настоящую анкету и которые Вы бы хотели сообщить врачу (фельдшеру)? да/нет: {{ patient_data.user_otherComplaints }}</p>
+                {% else %}
+                <a class="btn2"  href="{% url 'main:login'%}">Войти</a>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+    <script src="{% static "deps/js/js.js" %}" async></script>
+    
+</body>
+</html>

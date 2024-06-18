@@ -1,0 +1,54 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static "deps/css/index.css" %}">
+    <link rel="shortcut icon" href="#">
+    <link rel="stylesheet" href="{% static "deps/css/card.css" %}">
+    <style>
+        .card-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+        }
+
+        .card {
+            width: 300px;
+            margin-bottom: 20px;
+        }
+
+        .search-container {
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+
+        .search-button {
+            margin-left: 10px;
+        }
+
+        .search-results {
+            margin-top: 20px;
+        }
+    </style>
+    <title>Главная</title>
+</head>
+<body>
+    <div class="header">
+        <div class='containerHeader'>
+            <div class="rowHeader">
+                <div class="col-12Header">
+                    {% if request.user.is_authenticated %}
+                    <h3 class="user" style="float:right;">{{ request.user }}</h3>
+                    <a class="btn" href="{% url 'main:electronic_medical_card' %}?patient_id={{ patient_id }}&passport={{ passport }}&name={{ name }}&sex={{ sex }}&age={{ age }}&telephone={{ telephone }}">Вернуться к карточке пациента</a>
+                </div>
+            </div>
+        </div>
+        <h1 class="user" style="margin: 20px">Изменения сохранены успешно</h1>
+        {% else %}
+        <a class="btn"  href="{% url 'main:login'%}">Войти</a>
+        {% endif %}
+    </div>
+</body>
+</html>

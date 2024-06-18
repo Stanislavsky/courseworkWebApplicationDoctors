@@ -1,0 +1,258 @@
+*, *:before, *:after
+{
+    box-sizing: inherit;
+}
+
+@font-face
+{
+    font-family: "mainTxt";
+    src: url("../otf/LTSuperior-Medium.otf");
+}
+
+html
+{
+    
+    box-sizing: border-box;
+    font-size: 20px;
+    background-color: rgb(255, 255, 255);
+}
+
+body, p, h1, h2, h3, h4, ul, ol
+{
+    margin: 0;
+    padding: 0;  
+}
+
+body
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background:url('../Images/doct.jpg') no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+.wrapper 
+{   
+    width: 420px;
+    background: transparent;
+    
+    border-radius: 10px;
+    padding: 30px 40px;
+    border: 2px solid rgb(0, 0, 0, .1);
+    backdrop-filter: blur(20px);
+    box-shadow: 0 0 10px rgb(0, 0, 0, .3);
+}
+
+.wrapper h1
+{
+    width: 90px;
+    margin: 0 auto;
+    color: rgb(255, 255, 255);
+    
+}
+
+.wrapper .inputBox 
+{
+    width: 100%;
+    height: 50px;
+    margin: 30px, 0px;
+}
+
+.remember .error_message
+{
+    color: rgb(255, 255, 255);  
+    font-family: 'mainTxt';
+    text-align: center;
+    margin-left: 30px;
+}
+
+.inputBox input
+{
+    width: 100%;
+    height: 100%;
+    /* background-color: aqua; */
+    border: none;
+    outline: none;
+    border: 2px solid rgb(133, 129, 129);
+    border-radius: 40px;
+    
+    padding: 20px 45px 20px 20px;
+    font-family: 'mainTxt';
+    
+}
+.inputBox
+{
+    margin-top: 20px;
+}
+
+.inputBox input::placeholder
+{
+    color:rgb(49, 49, 49);
+    font-family: 'mainTxt';
+}
+
+.Login
+{
+    font-family: 'mainTxt';
+}
+.Login2
+{
+    color: #fff;
+    font-family: 'mainTxt';
+    margin-left: 70px;
+    font-size: 33px;
+    font-weight: bold;
+}
+
+.inputBox i
+{
+    position: absolute;
+}
+
+.wrapper .remember
+{
+    display: flex;
+    justify-content: space-between;
+    font-size: 14.5px;
+    margin-top:10px;
+    margin-bottom: 15px;
+}
+
+.remember label input
+{
+    accent-color:#fff;
+    margin-right: 3px;
+}
+
+.remember a
+{
+    color: #ffffff;
+    text-decoration: none;
+    margin-top: 4px;
+}
+
+.remember a:hover
+{
+    text-decoration: underline;
+}
+
+.wrapper .btn
+{
+    width: 100%;
+    height: 45px;
+    background: #fff;
+    border: none;
+    outline: none;
+    border-radius: 40px;
+    box-shadow: 0 0 10px rgb(0, 0, 0, .1);
+    cursor: pointer;
+    font-size: 16px;
+    color: rgb(72, 72, 72);
+    font-weight: 600;
+    margin-bottom: 10px;
+    font-family: 'mainTxt';
+    transition: background-color 0.3s;
+}
+
+
+.btn:hover
+{
+    
+    background-color: rgb(72, 72, 72);
+    color:#fff;
+}
+
+.wrapper .register-link
+{
+    font-size: 14.5px;
+    text-align: center;
+}
+
+
+
+
+.doctors
+{
+    margin-top: 20px;
+    border-radius: 35px;
+    background-color: white;
+    border: 1px solid #ccc;
+    padding: 5px;
+    font-size: 14px;
+    color: #333333;
+    border: none;
+    outline: none;
+    padding: 14px 10px;
+    border: 2px solid #6e6e6e;
+    text-align: center;
+}
+
+
+.btn2
+{
+    font-family: 'mainTxt';
+    color: #fff;
+    margin-left: 140px;
+    font-size: 19px;
+    transition: color 0.3s;
+}
+.btn2:hover
+{
+    font-family: 'mainTxt';
+    color: #464646;
+    margin-left: 140px;
+    font-size: 19px;
+}
+
+
+.btn1
+{
+    font-family: 'mainTxt';
+    color: #fff;
+    margin-left: 80px;
+    font-size: 19px;
+    transition: color 0.3s;
+}
+.btn1:hover
+{
+    font-family: 'mainTxt';
+    color: #464646;
+    margin-left: 80px;
+    font-size: 19px;
+}
+
+
+
+
+.registration-form input[type="text"],
+.registration-form input[type="email"],
+.registration-form input[type="password"],
+.registration-form select {
+    /* Ваши стили здесь */
+    /* Например: */
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    
+    outline: none;
+}
+
+.registration-form label {
+    font-family: 'mainTxt';
+}
+
+
+.errorlist {
+    color: rgb(154, 33, 33);
+    font-size: 14px;
+    font-family: 'mainTxt';
+    list-style-type: none;
+    font-weight: bold;
+
+}

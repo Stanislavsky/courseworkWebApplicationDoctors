@@ -1,0 +1,27 @@
+*, *:before, *:after
+{
+    box-sizing: inherit;
+}
+
+html
+{
+    box-sizing: border-box;
+    font-size: 20px;
+    background-color: rgb(255, 255, 255);
+}
+
+body, p, h1, h2, h3, h4, ul, ol
+{
+    margin: 0;
+    padding: 0;  
+}
+
+body
+{
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background:url('../Images/doct.jpg') no-repeat;
+    background-size: cover;
+    background-position: center;
+}

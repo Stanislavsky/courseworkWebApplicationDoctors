@@ -1,0 +1,140 @@
+@font-face
+{
+    font-family: "mainTxt";
+    src: url("../otf/LTSuperior-Medium.otf");
+}
+
+*, *:before, *:after
+{
+    box-sizing: inherit;
+}
+
+html
+{
+    box-sizing: border-box;
+    font-size: 18px;
+}
+
+body,p,h1,h2,h3,ul,ol
+{
+    margin: 0 auto;
+    padding: 0;
+}
+
+
+.container
+{
+    opacity: 0.7;
+    border: 3px solid #3987fb;
+    background-color: rgb(34, 123, 218);
+    max-width: 250px;
+    margin: 0 auto;
+    padding: 10px 15px;
+    border-radius: 6px;
+    height: 370px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    
+    
+    transition: margin 0.3s, opacity 0.7s;
+    
+}
+
+
+
+.container:hover {
+    opacity: 1;
+    margin: 20px 25px;
+}
+
+.button
+{
+    font-family: "mainTxt";
+    display: block; 
+    margin: 0px auto; 
+    background-color: #d0e4ffe2;
+    width: 100%;
+    height: 100%;
+    border-radius: 3px;
+    border: none;
+    transition: background-color 0.3s;
+}
+
+.button:hover
+{
+    font-family: "mainTxt";
+    color: aliceblue;
+    background-color: #1d528c;
+    
+}
+
+.name
+{
+    background-color: #d0e4ffe2;
+    font-family: "mainTxt";
+    
+    border-radius: 4px;
+    text-align: center;
+}
+
+.photo
+{   
+    height: 100px;
+    margin: 0 auto;
+    display: block;
+}
+
+.warp
+{
+    margin-top: 10px;
+}
+
+.fields
+{
+    font-family: "mainTxt";
+    background-color: #d0e4ffe2;;
+    border-radius: 4px;
+    text-align: center;
+}
+
+.fieldsButton
+{
+    
+    font-family: "mainTxt";
+    border-radius: 4px;
+    text-align: center;
+    font-size: 17px;
+}
+
+.row
+{
+    display: flex;
+    flex-wrap: wrap;
+    
+}
+
+.row > div
+{
+    padding: 0px;
+    margin: 2px auto;
+    border-radius: 6px;
+    border: 2px solid #065bc2;
+}
+
+.col-12
+{
+    background-color: #d0e4ffe2;
+    width: calc(100% - 1px)
+}
+
+
+
+
+
+
+
+
+
+
+
+
+

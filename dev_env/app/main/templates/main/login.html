@@ -1,0 +1,36 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static "deps/css/registration.css" %}">
+    <title>Вход</title>
+</head>
+<body>
+    <div class="wrapper">
+        <form method="POST" action="{% url 'main:login' %}">
+            {% csrf_token %}
+            <h1 class="Login">Вход</h1>
+            <div class="inputBox">
+                <input name="username" type="text" placeholder="Логин" required>
+            </div>
+            <h1></h1>
+            <div class="inputBox">
+                <input name="password" type="password" placeholder="Пароль" required>
+            </div>
+                <div class="remember">
+                    <label for="">
+                        {% if error_message %}
+                            <p class="error_message">{{ error_message }}</p>              
+                        {% endif %}
+                    </label>
+                </div>
+            <button type="submit" class="btn">Войти</button>
+            <a class="btn1"  href="{% url 'main:registration'%}">Зарегистрироваться</a>
+        </form>
+    </div>
+    <script src="{% static "deps/js/js.js" %}" defer></script>
+</body>
+</html>

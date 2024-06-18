@@ -1,0 +1,34 @@
+{% extends 'main/base.html' %}
+{% block content %}
+    {% if is_therapist %}
+        {% include 'main/therapist.html' %}
+
+    {% elif is_radiologist %}
+        {% include 'main/is_radiologist.html' %}
+    
+    {% elif is_gynecologist %}
+        {% include 'main/is_gynecologist.html' %}
+
+    {% elif is_ophthalmologist %}
+        {% include 'main/is_ophthalmologist.html' %}
+
+    {% elif is_cardiologist %}
+        {% include 'main/is_cardiologist.html' %}
+
+    {% elif is_procedural_nurse %}
+        {% include 'main/is_procedural_nurse.html' %}
+
+    {% elif is_mammologist %}
+        {% include 'main/is_mammologist.html' %}
+
+    {% elif is_urologist %}
+        {% include 'main/is_urologist.html' %}
+    
+    {% elif user %}
+        {% include 'main/user.html' %}
+
+    {% endif %}
+
+{% endblock %}
+                           
+ 

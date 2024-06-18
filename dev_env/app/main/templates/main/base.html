@@ -1,0 +1,59 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static "deps/css/innerCard.css" %}">
+    
+    <title>Пациент</title>
+
+</head>
+<body>
+    <div class="header">
+        <div class="container">
+            {% if request.user.is_authenticated %}
+            <div class="row">
+                <div class="col-12">
+                    <p class="text">Электронная медицинская карта</p>
+                </div>
+
+                <div class="col-12">
+                    <p class="textMain">Серия и номер паспорта пациента: {{ passport }} </p>
+                    <h3 class="user" >{{ request.user }}</h3>
+                </div>
+
+                <div class="col-12">
+                    <a href="{% url 'main:index'%}" class="butMain">Главное меню</a>
+                </div>
+            </div>
+        </div>
+        <div class="container2">
+            <div class="row2">
+                
+                <div class="mainA">
+
+                </div>
+            
+                <div class="mainB">
+                    <img src="{% static "deps/photo/0684456b-aa2b-4631-86f7-93ceaf33303c.png" %}" halt="" class="photo">
+                    <p class="name"> И.Ф.О.: {{ name }} </p>
+                    <p class="name"> Пол: {{ sex }} </p>
+                    <p class="name"> Телефон: {{ telephone }} </p>
+                    <p class="name"> Возраст: {{ age }} </p>
+                    
+                </div>
+                <div class="mainC">
+                    {% block content %}
+                    {% include "main/patient_additional_info.html" %}
+                    {% endblock %}
+                </div>
+                
+            </div>
+        </div>
+        {% else %}
+        <a class="btn2"  href="{% url 'main:login'%}">Войти</a>
+        {% endif %}
+    </div>
+</body>
+</html>

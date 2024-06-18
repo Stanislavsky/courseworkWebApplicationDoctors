@@ -1,0 +1,21 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static "deps/css/registration.css" %}">
+    <title>Регистрация</title>
+</head>
+<body>
+    <div class="wrapper">
+        <form method="POST" class="registration-form" action="{% url 'main:registration' %}">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" class="btn">Зарегистрироваться</button>
+            <a class="btn2" href="{% url 'main:login' %}">Войти</a>
+        </form>
+    </div>
+    <script src="{% static "deps/js/js.js" %}" defer></script>
+</body>
+</html>

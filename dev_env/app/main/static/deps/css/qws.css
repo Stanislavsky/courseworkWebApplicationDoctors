@@ -1,0 +1,129 @@
+@font-face
+{
+    font-family: "mainTxt";
+    src: url("../otf/LTSuperior-Medium.otf");
+}
+
+*, *:before, *:after
+{
+    box-sizing: inherit;
+}
+
+html
+{
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    background-color: rgb(31, 102, 195);
+    box-sizing: border-box;
+    font-size: 18px;
+}
+
+body,p,h1,h2,h3,ul,ol
+{
+    margin: 0 auto;
+    padding: 0;
+}
+
+
+
+
+.container
+{
+    
+    background-color: rgb(34, 123, 218);
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 10px 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* тень */
+    
+    
+    
+}
+.container2
+{
+    
+    /* background-color: #c60101; */
+    max-width: 100%;
+    margin: 0px;
+    padding: 10px 1px;
+    
+}
+
+
+.button
+{
+    font-family: "mainTxt";
+    margin: 0px auto;
+    margin-top: 40px;
+    margin-bottom: 10px;
+    margin-right: 20px;
+    background-color: #3fb9ff;
+    width: 20%;
+    height: 30px;
+    border-radius: 3px;
+    border: none;
+    transition: background-color 0.3s;
+}
+
+
+
+.button2
+{
+
+    position: relative;
+    top: 5px; /* Перемещение вниз */
+    left: 20px; /* Перемещение вправо */
+
+    display: inline-block;
+    padding: 7px;
+    font-family: "mainTxt";
+    margin: 0px auto;
+    margin-top: 5px;
+    margin-bottom: 10px;
+    margin-right: 20px;
+    background-color: #3fb9ff;
+    width: 31%;
+    height: 30px;
+    border-radius: 3px;
+    border: none;
+    transition: background-color 0.3s;
+    border: none;
+    
+}
+
+.button2:hover
+{
+    font-family: "mainTxt";
+    color: aliceblue;
+    background-color: #136ea3;
+    
+}
+.button:hover
+{
+    font-family: "mainTxt";
+    color: aliceblue;
+    background-color: #136ea3;
+    
+}
+
+
+.questionnaire
+{
+    margin: 3px;
+    background-color: #fdfdfd4e;
+    border:2px solid #dadada;
+    border-radius: 10px;
+    color: rgb(0, 0, 0);
+    font-family: "mainTxt";
+    padding-left: 6px;
+    
+
+}
+
+
+
+
+
+
+
